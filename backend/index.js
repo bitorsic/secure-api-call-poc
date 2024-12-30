@@ -18,13 +18,14 @@ const decrypt = (encryptedText) => {
   };
 
 app.post('/', (req, res) => {
-	console.log(`Encrypted data received: ${req.body.data}`);
+	console.log(`Encrypted data received: ${req.body.data}\n`);
 
 	const decryptedDataString = decrypt(req.body.data);
 
-	console.log(`Decrypted data: ${decryptedDataString}`);
-
+	console.log(`Decrypted data:`);
 	console.log(JSON.parse(decryptedDataString));
+
+	return res.status(200).send();
 });
 
 const PORT = process.env.PORT || 8080;
